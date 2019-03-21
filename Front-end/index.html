@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Store</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<h1>We offer products within the following categories: </h1>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: "https://hrovina-online-store.herokuapp.com/categories",
+            type: 'GET',
+            data: {
+                format: 'json'
+            },
+            success: function(res) {
+                $.each ( res, function( key, value ) {
+                    console.log(value.name)
+                    $("ul").append("<li>" + value.name + "</li>" );
+                });
+            }
+        });
+    });
+
+</script>
+
+<div>
+    <ul>
+
+    </ul>
+</div>
+</body>
+</html>
+
+<!--https://hrovina-online-store.herokuapp.com/categories-->
+
