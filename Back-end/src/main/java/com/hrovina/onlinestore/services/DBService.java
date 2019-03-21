@@ -2,8 +2,8 @@ package com.hrovina.onlinestore.services;
 
 import com.hrovina.onlinestore.entities.*;
 import com.hrovina.onlinestore.repositories.*;
-import enums.ClientType;
-import enums.PaymentState;
+import com.hrovina.onlinestore.enums.ClientType;
+import com.hrovina.onlinestore.enums.PaymentState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
