@@ -7,7 +7,7 @@ import com.hrovina.onlinestore.repositories.OrderItemRepository;
 import com.hrovina.onlinestore.repositories.OrderRepository;
 import com.hrovina.onlinestore.repositories.PaymentRepository;
 import com.hrovina.onlinestore.services.exceptions.ObjectNotFoundException;
-import enums.PaymentState;
+import com.hrovina.onlinestore.enums.PaymentState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
