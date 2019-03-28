@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetByIdFormComponent {
 
-  powers = ['Really Smart', 'Super Flexible',
-    'Super Hot', 'Weather Changer'];
+  objects = ['Category', 'Customer',
+    'Order', 'Product'];
 
   submitted = false;
 
