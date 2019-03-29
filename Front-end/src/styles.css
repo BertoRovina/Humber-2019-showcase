@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo|Raleway');
+@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 
 h1, h2, h3, p, a{
     font-family: 'Heebo', sans-serif;
