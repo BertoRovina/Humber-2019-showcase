@@ -5,9 +5,9 @@ import {GetPageComponent} from './get-page/get-page.component';
 import {HomePageComponent} from './home-page/home-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'get-page', component: GetPageComponent },
-  { path: 'home-page', component: HomePageComponent }
+    { path: '', component: HomePageComponent },
+    { path: 'home-page', component: HomePageComponent },
+  { path: 'get-page', component: GetPageComponent }
 ];
 
 @NgModule({
