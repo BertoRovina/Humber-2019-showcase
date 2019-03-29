@@ -1,0 +1,12 @@
+<div class="container">
+
+    <h1>Welcome</h1>
+    <h2>Categories available:</h2>
+
+    <ul *ngIf="categoriesObservable | async as categories else empty">
+        <li *ngFor="let category of categories">
+            {{ category.name }} ({{ category.id }})
+        </li>
+    </ul>
+    <ng-template #empty>No categories yet...</ng-template>
+</div>
