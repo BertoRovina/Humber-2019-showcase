@@ -1,0 +1,29 @@
+<h3>Categories</h3>
+<div>
+  <label>Category name:
+    <input #categoryName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(categoryName.value); categoryName.value=''">
+    add
+  </button>
+  <button (click)="search(categoryName.value)">
+    search
+  </button>
+  <button (click)="searchById(categoryName.value)">
+    search by id
+  </button>
+</div>
+
+<ul class="categories">
+  <li *ngFor="let category of categories">
+    <a (click)="edit(category)">
+      <span class="badge">{{ category.id || -1 }}</span>
+      <span *ngIf="category!==editCategory">{{category.name}}</span>
+      <input *ngIf="category===editCategory" [(ngModel)]="category.name"
+             (blur)="update()" (keyup.enter)="update()">
+    </a>
+    <button class="delete" title="delete Category"
+            (click)="delete(category)">x</button>
+  </li>
+</ul>
