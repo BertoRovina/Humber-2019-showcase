@@ -13,22 +13,23 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GetPageComponent,
-    GetByIdFormComponent,
-    SideNavComponent,
-    CategoryComponent
-  ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    RouterModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        GetPageComponent,
+        GetByIdFormComponent,
+        SideNavComponent,
+        CategoryComponent,
+        HomePageComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        RouterModule,
+        AppRoutingModule,
+        FormsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 
 })
 export class AppModule { }
