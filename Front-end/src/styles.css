@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo|Raleway');
+
+h1, h2, h3, p, a{
+    font-family: 'Heebo', sans-serif;
+}
+
 .main{
     margin-left: 100px;
 }
