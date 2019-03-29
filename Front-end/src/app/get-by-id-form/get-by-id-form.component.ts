@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 
 @Component({
   selector: 'app-get-by-id-form',
@@ -13,5 +13,5 @@ export class GetByIdFormComponent {
   submitted = false;
 
   onSubmit() { this.submitted = true; }
-
 }
+

@@ -7,18 +7,24 @@ import { GetByIdFormComponent } from './get-by-id-form/get-by-id-form.component'
 import {RouterModule} from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import {HttpClientModule} from '@angular/common/http';
+import { CategoryComponent } from './category/category.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetPageComponent,
     GetByIdFormComponent,
-    SideNavComponent
+    SideNavComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
