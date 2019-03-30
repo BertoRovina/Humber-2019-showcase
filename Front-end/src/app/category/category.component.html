@@ -1,29 +1,29 @@
-<h3>Categories</h3>
-<div>
-  <label>Category name:
-    <input #categoryName />
-  </label>
+<form>
+  <div class="form-group">
+      <label for="categoryId">Category Id:</label>
+      <input class="form-control" id="categoryId" #categoryId />
+  </div>
   <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(categoryName.value); categoryName.value=''">
-    add
+  <button (click)="searchById(categoryId.value)">
+    Search
   </button>
-  <button (click)="search(categoryName.value)">
-    search
-  </button>
-  <button (click)="searchById(categoryName.value)">
-    search by id
-  </button>
+</form>
+
+<div>
+  <ul class="categories">
+
+  </ul>
 </div>
 
-<ul class="categories">
-  <li *ngFor="let category of categories">
-    <a (click)="edit(category)">
-      <span class="badge">{{ category.id || -1 }}</span>
-      <span *ngIf="category!==editCategory">{{category.name}}</span>
-      <input *ngIf="category===editCategory" [(ngModel)]="category.name"
-             (blur)="update()" (keyup.enter)="update()">
-    </a>
-    <button class="delete" title="delete Category"
-            (click)="delete(category)">x</button>
-  </li>
-</ul>
+<!--<ul class="categories">-->
+<!--  <li *ngFor="let category of categories">-->
+<!--    <a (click)="edit(category)">-->
+<!--      <span class="badge">{{ category.id || -1 }}</span>-->
+<!--      <span *ngIf="category!==editCategory">{{category.name}}</span>-->
+<!--      <input *ngIf="category===editCategory" [(ngModel)]="category.name"-->
+<!--             (blur)="update()" (keyup.enter)="update()">-->
+<!--    </a>-->
+<!--    <button class="delete" title="delete Category"-->
+<!--            (click)="delete(category)">x</button>-->
+<!--  </li>-->
+<!--</ul>-->

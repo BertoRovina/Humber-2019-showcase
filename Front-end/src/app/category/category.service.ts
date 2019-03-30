@@ -1,16 +1,27 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Category} from './category';
 import {catchError} from 'rxjs/internal/operators/catchError';
+import {HandleError, HttpErrorHandler} from '../http-error-handler.service';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Access-Control-Allow-Origin': '*'
+  })
+};
 
 @Injectable()
 export class CategoryService {
   categoriesUrl = 'https://hrovina-online-store.herokuapp.com/categories';  // URL to web api
-  // private handleError: HandleError;
+  private handleError: HandleError;
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient,
+    httpErrorHandler: HttpErrorHandler) {
+    this.handleError = httpErrorHandler.createHandleError('CategoriesService');
+  }
 
   /** GET Categories from the server */
   getCategories(): Observable<Category[]> {
@@ -34,21 +45,13 @@ export class CategoryService {
       );
   }
 
-  /* GET Categories whose name contains search term */
+  /* GET Categories with the id sent */
   findCategoryById(id: string): Observable<Category[]> {
 
-    // Add safe, URL encoded search parameter if there is a search term
-    const options = id ?
-      { params: new HttpParams().set('id', id) } : {};
-
-    return this.http.get<Category[]>(this.categoriesUrl, options)
+    return this.http.get<Category[]>(this.categoriesUrl + '/' + id)
       .pipe(
-        catchError(this.handleError('searchCategories', []))
+        catchError(this.handleError('findCategoryById', []))
       );
-  }
-
-  private handleError(categories: string, anies: any[]) {
-    return undefined;
   }
 
   addCategory(newCategory: Category) {
@@ -62,5 +65,7 @@ export class CategoryService {
   updateCategory(editCategory: Category) {
     return null;
   }
+
+
 }
 

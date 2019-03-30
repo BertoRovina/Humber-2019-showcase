@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -11,6 +10,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
+import {HttpClientModule} from '@angular/common/http';
+import {HttpErrorHandler} from './http-error-handler.service';
+import {MessageService} from './message.service';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,10 @@ import { CategoryComponent } from './category/category.component';
         AppRoutingModule,
         FormsModule
     ],
-    providers: [],
+    providers: [
+      HttpErrorHandler,
+      MessageService
+    ],
     bootstrap: [AppComponent]
 
 })

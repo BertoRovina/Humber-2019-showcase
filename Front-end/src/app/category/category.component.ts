@@ -15,7 +15,7 @@ export class CategoryComponent implements OnInit {
   constructor(private categoriesService: CategoryService) { }
 
   ngOnInit() {
-    this.getCategories();
+    // this.getCategories();
   }
 
   getCategories(): void {
@@ -57,6 +57,7 @@ export class CategoryComponent implements OnInit {
       this.categoriesService.findCategoryById(id)
         .subscribe(categories => this.categories = categories);
     }
+    console.log(this.categories);
   }
 
   update() {
