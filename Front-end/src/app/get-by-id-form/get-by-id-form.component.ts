@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Injectable} from '@angular/core';
 
 @Component({
     selector: 'app-get-by-id-form',
@@ -11,10 +11,11 @@ export class GetByIdFormComponent {
         'Order', 'Product'];
     selectedOption = '';
     submitted = false;
-    onChange(newValue) {
-        this.selectedOption = newValue;
-        console.log(this.selectedOption);
-    }
+
     onSubmit() { this.submitted = true; }
 
+    onChange(newValue) {
+        this.selectedOption = newValue;
+    }
 }
+
