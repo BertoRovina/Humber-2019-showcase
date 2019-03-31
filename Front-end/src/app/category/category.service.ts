@@ -46,12 +46,10 @@ export class CategoryService {
   }
 
   /* GET Categories with the id sent */
-  findCategoryById(id: string): Observable<Category[]> {
+  findCategoryById(id: string): Observable<Category> {
 
-    return this.http.get<Category[]>(this.categoriesUrl + '/' + id)
-      .pipe(
-        catchError(this.handleError('findCategoryById', []))
-      );
+    return this.http.get<Category>(this.categoriesUrl + '/' + id)
+      .pipe();
   }
 
   addCategory(newCategory: Category) {

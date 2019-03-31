@@ -10,12 +10,13 @@ import {CategoryService} from './category.service';
 })
 export class CategoryComponent implements OnInit {
   categories: Category[];
+  category: Category;
   editCategory: Category;
 
   constructor(private categoriesService: CategoryService) { }
 
   ngOnInit() {
-    // this.getCategories();
+    this.getCategories();
   }
 
   getCategories(): void {
@@ -55,7 +56,7 @@ export class CategoryComponent implements OnInit {
     this.editCategory = undefined;
     if (id) {
       this.categoriesService.findCategoryById(id)
-        .subscribe(categories => this.categories = categories);
+        .subscribe(category => this.category = category);
     }
     console.log(this.categories);
   }
