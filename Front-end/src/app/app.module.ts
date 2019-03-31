@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { GetPageComponent } from './get-page/get-page.component';
@@ -9,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { CustomerComponent } from './customer/customer.component';
 
 
 @NgModule({
@@ -17,13 +19,16 @@ import { HomePageComponent } from './home-page/home-page.component';
         GetPageComponent,
         GetByIdFormComponent,
         SideNavComponent,
-        HomePageComponent
+        HomePageComponent,
+        CustomerComponent
     ],
     imports: [
         BrowserModule,
         RouterModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

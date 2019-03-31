@@ -19,9 +19,6 @@ export class HomePageComponent implements OnInit {
     constructor(private  httpClient: HttpClient) {}
 
   ngOnInit() {
-      this.categoriesObservable = this.httpClient
-
-          .get<Category[]>('https://hrovina-online-store.herokuapp.com/categories');
   }
 
 }

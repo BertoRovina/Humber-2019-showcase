@@ -1,0 +1,14 @@
+<form [formGroup]="regForm" (ngSubmit)="submit()">
+    <label for="idSelect">Type desired id: </label>
+    <input formControlName="id" type="number" id="idSelect">
+    <button type="submit">Submit</button>
+</form>
+
+<div *ngIf="customersObservable | async as customers">
+    <span *ngFor="let customer of customers">
+        <p>ID: {{ customer.id }} </p>
+        <p>Name: {{ customer.name }} </p>
+        <p>Email: {{ customer.email }} </p>
+        <p>Address 1: {{ customer.addressList[0].address }} </p>
+    </span>
+</div>

@@ -3,9 +3,13 @@
   <form>
     <div class="form-group">
       <label for="objects">Object:</label>
-      <select class="form-control" id="objects" required>
+
+      <select (change)="onChange($event.target.value)" class="form-control" id="objects" required>
+
         <option *ngFor="let obj of objects" [value]="obj">{{obj}}</option>
+
       </select>
+
     </div>
 
     <div class="form-group">
@@ -16,4 +20,8 @@
     <button type="submit" class="btn btn-success">Submit</button>
 
   </form>
+
+  <span *ngIf="selectedOption === 'Customer'">
+      <app-customer></app-customer>
+  </span>
 </div>
