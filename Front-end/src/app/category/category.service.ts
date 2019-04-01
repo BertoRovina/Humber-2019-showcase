@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Category} from './category';
 import {catchError} from 'rxjs/internal/operators/catchError';
 import {HandleError, HttpErrorHandler} from '../http-error-handler.service';
+import {Page} from './page';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -49,7 +50,9 @@ export class CategoryService {
   findCategoryById(id: string): Observable<Category> {
 
     return this.http.get<Category>(this.categoriesUrl + '/' + id)
-      .pipe();
+      .pipe(
+        catchError(this.handleError('findCategoryById', null))
+      );
   }
 
   addCategory(newCategory: Category) {
@@ -65,5 +68,19 @@ export class CategoryService {
   }
 
 
+  searchCategoriesAdvanced(page: string, linesPerPage: string, orderBy: string, direction: string): Observable<Page> {
+    // Add safe, URL encoded search parameter if there is a search term
+    const options = page ?
+      { params: new HttpParams().set('page', page)
+          .set('linesPerPage', linesPerPage)
+          .set('orderBy', orderBy)
+          .set('direction', direction)} : {};
+
+    return this.http
+      .get<Page>(this.categoriesUrl + '/page', options)
+      .pipe(
+        catchError(this.handleError('searchCategories', null))
+      );
+  }
 }
 

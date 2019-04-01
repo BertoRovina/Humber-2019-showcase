@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Category} from './category';
 import {CategoryService} from './category.service';
+import {Page} from './page';
 
 @Component({
   selector: 'app-category',
@@ -11,15 +12,34 @@ import {CategoryService} from './category.service';
 export class CategoryComponent implements OnInit {
   categories: Category[];
   category: Category;
+  page: Page;
   editCategory: Category;
+  // if true, search method is by Id
+  searchMethod: boolean;
+  directionOptions = ['Ascending', 'Descending'];
+  orderByOptions = ['Name', 'Id']
 
   constructor(private categoriesService: CategoryService) { }
 
   ngOnInit() {
-    this.getCategories();
+    this.setById(true);
+  }
+
+  setById(isById: boolean): void {
+    if (isById) {
+      this.searchMethod = true;
+    } else {
+      this.searchMethod = false;
+    }
+  }
+
+  isById(): boolean {
+    return this.searchMethod;
   }
 
   getCategories(): void {
+    this.page = null;
+    this.category = null;
     this.categoriesService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
@@ -53,6 +73,8 @@ export class CategoryComponent implements OnInit {
   }
 
   searchById(id: string) {
+    this.categories = null;
+    this.page = null;
     this.editCategory = undefined;
     if (id) {
       this.categoriesService.findCategoryById(id)
@@ -70,6 +92,28 @@ export class CategoryComponent implements OnInit {
           if (ix > -1) { this.categories[ix] = category; }
         });
       this.editCategory = undefined;
+    }
+  }
+
+  searchAdvanced(page: string, linesPerPage: string, orderBy: string, direction: string) {
+    this.categories = null;
+    this.category = null;
+
+    if (direction === 'Ascending') {
+      direction = 'ASC';
+    } else {
+      direction = 'DESC';
+    }
+
+    if (orderBy === 'Name') {
+      orderBy = 'name';
+    } else {
+      orderBy = 'id';
+    }
+
+    if (page && linesPerPage) {
+      this.categoriesService.searchCategoriesAdvanced(page, linesPerPage, orderBy, direction)
+        .subscribe(pageR => this.page = pageR);
     }
   }
 }

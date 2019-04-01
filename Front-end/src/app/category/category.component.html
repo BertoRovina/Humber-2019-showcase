@@ -1,7 +1,15 @@
-<form>
+<div class="form-group">
+  <h3>Search Method:</h3>
+  <form>
+    <input type="radio" name="searchMethod" value="byId" checked (click)="setById(true)"> By Id<br>
+    <input type="radio" name="searchMethod" value="byPage" (click)="setById(false)"> By Page<br>
+  </form>
+</div>
+
+<form *ngIf="isById()" id="formById">
   <div class="form-group">
-      <label for="categoryId">Category Id:</label>
-      <input class="form-control" id="categoryId" #categoryId />
+    <label for="categoryId">Category Id:</label>
+    <input class="form-control" id="categoryId" #categoryId />
   </div>
   <!-- (click) passes input value to add() and then clears the input -->
   <button (click)="searchById(categoryId.value)">
@@ -9,25 +17,69 @@
   </button>
 </form>
 
-<div>
-      <span class="badge">{{ category.id || -1 }}</span>
-      <span> {{category.name}}</span>
-        <li *ngFor="let product of category.productList">
-            <span> {{product.id}}</span>
-            <span> {{product.name}}</span>
-            <span> {{product.price}}</span>
-        </li>
+<form *ngIf="!isById()" id="formAdvanced">
+  <div class="form-group">
+    <label for="categoryId">Pages:</label>
+    <input class="form-control" id="page" #pages />
+  </div>
+  <div class="form-group">
+    <label for="categoryId">Lines per Page:</label>
+    <input class="form-control" id="linesPerPage" #linesPerPage />
+  </div>
+  <div class="form-group">
+    <label for="categoryId">Order by:</label>
+    <select class="form-control" id="orderBy" #orderBy>
+      <option *ngFor="let obj of orderByOptions" [value]="obj">{{obj}}</option>
+    </select>
+    <label for="categoryId">Direction:</label>
+    <select class="form-control" id="direction" #direction>
+      <option *ngFor="let obj of directionOptions" [value]="obj">{{obj}}</option>
+    </select>
+  </div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
+    Search
+  </button>
+</form>
+
+<div *ngIf="category">
+  <h3>Category found:</h3>
+  <ul>
+    <li>Category Id: {{ category.id || -1 }}</li>
+    <li>Category Name: {{category.name}}</li>
+    <li>Category Products:</li>
+    <ul>
+      <li *ngFor="let product of category.productList">
+        <ul>
+          <li>Product Id: {{product.id}}</li>
+          <li>Product Name: {{product.name}}</li>
+          <li>Product Price: {{product.price}}</li>
+        </ul>
+      </li>
+    </ul>
+  </ul>
 </div>
 
-<!--<ul class="categories">-->
-<!--  <li *ngFor="let category of categories">-->
-<!--    <a (click)="edit(category)">-->
-<!--      <span class="badge">{{ category.id || -1 }}</span>-->
-<!--      <span *ngIf="category!==editCategory">{{category.name}}</span>-->
-<!--      <input *ngIf="category===editCategory" [(ngModel)]="category.name"-->
-<!--             (blur)="update()" (keyup.enter)="update()">-->
-<!--    </a>-->
-<!--    <button class="delete" title="delete Category"-->
-<!--            (click)="delete(category)">x</button>-->
-<!--  </li>-->
-<!--</ul>-->
+<!--<div *ngIf="page">-->
+<!--  <h3>Categories found:</h3>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let category of categories">-->
+<!--      <ul>-->
+<!--        <li>Product Id: {{category.id}}</li>-->
+<!--        <li>Product Name: {{category.name}}</li>-->
+<!--      </ul>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<div *ngIf="page">
+  <h3>Categories found:</h3>
+  <ul>
+    <li *ngFor="let category of page.content">
+      <ul>
+        <li>Category Id: {{category.id}}</li>
+        <li>Category Name: {{category.name}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
