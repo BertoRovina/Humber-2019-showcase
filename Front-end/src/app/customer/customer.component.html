@@ -1,0 +1,87 @@
+<div class="form-group">
+  <h3>Search Method:</h3>
+  <form>
+    <input type="radio" name="searchMethod" value="byId" checked (click)="setById(true)"> By Id<br>
+    <input type="radio" name="searchMethod" value="byPage" (click)="setById(false)"> By Page<br>
+  </form>
+</div>
+
+<form *ngIf="isById()" id="formById">
+  <div class="form-group">
+    <label for="customerId">Customer Id:</label>
+    <input class="form-control" id="customerId" #customerId />
+  </div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="searchById(customerId.value)">
+    Search
+  </button>
+</form>
+
+<form *ngIf="!isById()" id="formAdvanced">
+  <div class="form-group">
+    <label for="customerId">Pages:</label>
+    <input class="form-control" id="page" #pages />
+  </div>
+  <div class="form-group">
+    <label for="customerId">Lines per Page:</label>
+    <input class="form-control" id="linesPerPage" #linesPerPage />
+  </div>
+  <div class="form-group">
+    <label for="customerId">Order by:</label>
+    <select class="form-control" id="orderBy" #orderBy>
+      <option *ngFor="let obj of orderByOptions" [value]="obj">{{obj}}</option>
+    </select>
+    <label for="customerId">Direction:</label>
+    <select class="form-control" id="direction" #direction>
+      <option *ngFor="let obj of directionOptions" [value]="obj">{{obj}}</option>
+    </select>
+  </div>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
+    Search
+  </button>
+</form>
+
+<div *ngIf="customer">
+  <h3>Customer found:</h3>
+  <ul>
+    <li>Customer Id: {{ customer.id || -1 }}</li>
+    <li>Customer Name: {{customer.name}}</li>
+    <li>Customer Name: {{customer.email}}</li>
+    <li>Customer Address:</li>
+    <ul>
+      <li *ngFor="let address of customer.addressList">
+        <ul>
+          <li>Address Id: {{address.id}}</li>
+          <li>Address: {{address.address}}</li>
+          <li>Number: {{address.number}}</li>
+          <li>Additional Address Info: {{address.additionalAddressInfo}}</li>
+          <li>Area: {{address.area}}</li>
+          <li>ZipCode: {{address.zipCode}}</li>
+          <li>City: {{address.city}}</li>
+          <li>State: {{address.city.state}}</li>
+        </ul>
+      </li>
+    </ul>
+    <ul>
+      <li *ngFor="let phone of customer.phones">
+        <ul>
+          <li>Phone: {{phone}}</li>
+        </ul>
+      </li>
+    </ul>
+  </ul>
+</div>
+
+<div *ngIf="page">
+  <h3>Categories found:</h3>
+  <ul>
+    <li *ngFor="let customer of page.content">
+      <ul>
+        <li>Customer Id: {{customer.id}}</li>
+        <li>Customer Name: {{customer.name}}</li>
+        <li>Customer Email: {{customer.email}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
