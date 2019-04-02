@@ -11,7 +11,7 @@
 
   <form *ngIf="isById()" id="formById">
     <div class="form-group">
-      <label for="categoryId">Order Id:</label>
+      <label for="categoryId">Category Id:</label>
       <input class="form-control" id="categoryId" #categoryId />
     </div>
     <!-- (click) passes input value to add() and then clears the input -->
@@ -40,27 +40,29 @@
       </select>
     </div>
     <!-- (click) passes input value to add() and then clears the input -->
-    <button  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
+    <a href="#categoryId-result"><button  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
       Search
-    </button>
+    </button></a>
   </form>
 
   <div *ngIf="category">
-    <h3>Order found:</h3>
-    <ul>
-      <li>Order Id: {{ category.id || -1 }}</li>
-      <li>Order Name: {{category.name}}</li>
-      <li>Order Products:</li>
+    <div id="categoryId-result" class="result-box">
+      <h3>Order found:</h3>
       <ul>
-        <li *ngFor="let product of category.productList">
-          <ul>
-            <li>Product Id: {{product.id}}</li>
-            <li>Product Name: {{product.name}}</li>
-            <li>Product Price: {{product.price}}</li>
-          </ul>
-        </li>
+        <li>Order Id: {{ category.id || -1 }}</li>
+        <li>Order Name: {{category.name}}</li>
+        <li>Order Products:</li>
+        <ul>
+          <li *ngFor="let product of category.productList">
+            <ul>
+              <li>Product Id: {{product.id}}</li>
+              <li>Product Name: {{product.name}}</li>
+              <li>Product Price: {{product.price}}</li>
+            </ul>
+          </li>
+        </ul>
       </ul>
-    </ul>
+    </div>
   </div>
 
   <div *ngIf="page">

@@ -43,10 +43,10 @@ import {ProductService} from './product/product.service';
         FormsModule
     ],
     providers: [
-      HttpErrorHandler,
-      MessageService,
-      CustomerService,
-      ProductService
+        HttpErrorHandler,
+        MessageService,
+        CustomerService,
+        ProductService
     ],
     bootstrap: [AppComponent]
 

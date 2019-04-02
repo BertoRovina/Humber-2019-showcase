@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo|Raleway');
 @import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
 /*@import url('https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css');*/
+
 h1, h2, h3, p, a{
     font-family: 'Heebo', sans-serif;
 }
 
 .main{
     margin-left: 100px;
+}
+
+.result-box{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    border: 1px solid #000000;
+    background-color: #f5f5f5;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px #061627 inset;
 }
