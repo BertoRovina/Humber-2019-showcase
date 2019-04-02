@@ -19,6 +19,7 @@ export class CategoryComponent implements OnInit {
   directionOptions = ['Ascending', 'Descending'];
   orderByOptions = ['Name', 'Id']
 
+
   constructor(private categoriesService: CategoryService) { }
 
   ngOnInit() {

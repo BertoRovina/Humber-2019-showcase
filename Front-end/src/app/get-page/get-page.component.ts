@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetPageComponent implements OnInit {
 
+  objects = ['Category', 'Customer',
+    'Order', 'Product'];
+
+  selectedObject: string;
+
   constructor() { }
 
   ngOnInit() {

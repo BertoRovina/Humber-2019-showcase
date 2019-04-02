@@ -1,1 +1,26 @@
-<app-get-by-id-form></app-get-by-id-form>
+<div class="container">
+  <h2>Get By ID</h2>
+  <form>
+    <div class="form-group">
+      <label for="selectedObject">Object:</label>
+      <select class="form-control" id="selectedObject" [(ngModel)]="selectedObject" name="selectedObject">
+        <option *ngFor="let obj of objects" [value]="obj">{{obj}}</option>
+      </select>
+    </div>
+  </form>
+
+  <div *ngIf="selectedObject=='Category'">
+    <app-category></app-category>
+  </div>
+  <div *ngIf="selectedObject=='Customer'">
+
+  </div>
+  <div *ngIf="selectedObject=='Order'">
+
+  </div>
+  <div *ngIf="selectedObject=='Product'">
+
+  </div>
+
+
+</div>

@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { GetPageComponent } from './get-page/get-page.component';
-import { GetByIdFormComponent } from './get-by-id-form/get-by-id-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -18,7 +17,6 @@ import {MessageService} from './message.service';
     declarations: [
         AppComponent,
         GetPageComponent,
-        GetByIdFormComponent,
         SideNavComponent,
         CategoryComponent,
         HomePageComponent
