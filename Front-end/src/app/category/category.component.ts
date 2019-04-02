@@ -12,18 +12,21 @@ import {Page} from './page';
 export class CategoryComponent implements OnInit {
   categories: Category[];
   category: Category;
+  updatedCategory: Category;
   page: Page;
   editCategory: Category;
   // if true, search method is by Id
   searchMethod: boolean;
   directionOptions = ['Ascending', 'Descending'];
-  orderByOptions = ['Name', 'Id']
+  orderByOptions = ['Name', 'Id'];
+  location: string = location.pathname;
 
 
   constructor(private categoriesService: CategoryService) { }
 
   ngOnInit() {
     this.setById(true);
+    console.log(location);
   }
 
   setById(isById: boolean): void {
@@ -53,12 +56,11 @@ export class CategoryComponent implements OnInit {
     // The server will generate the id for this new category
     const newCategory: Category = { name } as Category;
     this.categoriesService.addCategory(newCategory)
-      .subscribe(category => this.categories.push(category));
+      .subscribe();
   }
 
-  delete(category: Category): void {
-    this.categories = this.categories.filter(h => h !== category);
-    this.categoriesService.deleteCategory(category.id);
+  delete(id: number): void {
+    this.categoriesService.deleteCategory(id);
   }
 
   edit(category) {
@@ -84,16 +86,14 @@ export class CategoryComponent implements OnInit {
     console.log(this.categories);
   }
 
-  update() {
-    if (this.editCategory) {
-      this.categoriesService.updateCategory(this.editCategory)
-        .subscribe(category => {
-          // replace the hero in the heroes list with update from server
-          const ix = category ? this.categories.findIndex(c => c.id === category.id) : -1;
-          if (ix > -1) { this.categories[ix] = category; }
-        });
-      this.editCategory = undefined;
+  update(newName: string) {
+    if (newName) {
+      this.updatedCategory = this.category;
+      this.updatedCategory.name = newName;
+      this.categoriesService.updateCategory(this.category.id, this.updatedCategory)
+        .subscribe();
     }
+    this.category = null;
   }
 
   searchAdvanced(page: string, linesPerPage: string, orderBy: string, direction: string) {

@@ -9,7 +9,8 @@ import {Page} from './page';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Access-Control-Allow-Origin': 'https://hrovina-online-store.herokuapp.com',
+    'Access-Control-Allow-Methods' : '*'
   })
 };
 
@@ -55,16 +56,26 @@ export class CategoryService {
       );
   }
 
-  addCategory(newCategory: Category) {
-    return null;
+  /** POST: add a new category to the database */
+  addCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(this.categoriesUrl, category, httpOptions)
+      .pipe(
+        catchError(this.handleError('addCategory', category))
+      );
   }
 
   deleteCategory(id: number) {
     return null;
   }
 
-  updateCategory(editCategory: Category) {
-    return null;
+  updateCategory(id: number, updatedCategory: Category) {
+    httpOptions.headers =
+      httpOptions.headers.set('Authorization', 'my-new-auth-token');
+
+    return this.http.put<Category>(this.categoriesUrl + '/' + id, updatedCategory, httpOptions)
+      .pipe(
+        catchError(this.handleError('updatedCategory', updatedCategory))
+      );
   }
 
 

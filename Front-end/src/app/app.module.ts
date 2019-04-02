@@ -14,6 +14,9 @@ import {HttpErrorHandler} from './http-error-handler.service';
 import {MessageService} from './message.service';
 import { CustomerComponent } from './customer/customer.component';
 import {CustomerService} from './customer/customer.service';
+import { PostPageComponent } from './post-page/post-page.component';
+import { PutPageComponent } from './put-page/put-page.component';
+import { DelPageComponent } from './del-page/del-page.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,10 @@ import {CustomerService} from './customer/customer.service';
         SideNavComponent,
         CategoryComponent,
         HomePageComponent,
-        CustomerComponent
+        CustomerComponent,
+        PostPageComponent,
+        PutPageComponent,
+        DelPageComponent
     ],
     imports: [
         BrowserModule,
