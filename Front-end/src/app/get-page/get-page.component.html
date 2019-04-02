@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Get By ID</h2>
+  <h2>GET</h2>
   <form>
     <div class="form-group">
       <label for="selectedObject">Object:</label>
@@ -13,7 +13,7 @@
     <app-category></app-category>
   </div>
   <div *ngIf="selectedObject=='Customer'">
-
+    <app-customer></app-customer>
   </div>
   <div *ngIf="selectedObject=='Order'">
 

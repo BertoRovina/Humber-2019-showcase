@@ -12,6 +12,8 @@ import { CategoryComponent } from './category/category.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpErrorHandler} from './http-error-handler.service';
 import {MessageService} from './message.service';
+import { CustomerComponent } from './customer/customer.component';
+import {CustomerService} from './customer/customer.service';
 
 @NgModule({
     declarations: [
@@ -19,7 +21,8 @@ import {MessageService} from './message.service';
         GetPageComponent,
         SideNavComponent,
         CategoryComponent,
-        HomePageComponent
+        HomePageComponent,
+        CustomerComponent
     ],
     imports: [
         BrowserModule,
@@ -30,7 +33,8 @@ import {MessageService} from './message.service';
     ],
     providers: [
       HttpErrorHandler,
-      MessageService
+      MessageService,
+      CustomerService
     ],
     bootstrap: [AppComponent]
 
