@@ -7,14 +7,12 @@
       <select (change)="onChange($event.target.value)" class="form-control" id="objects" required>
         <option *ngFor="let obj of objects" [value]="obj">{{obj}}</option>
       </select>
-
     </div>
 
     <div class="form-group">
       <label for="id">ID:</label>
       <input type="text" class="form-control" id="id" #id required>
     </div>
-
   </form>
 
   <span *ngIf="selectedOption === 'Customer'">
@@ -22,5 +20,4 @@
   </span>
 
   <app-category></app-category>
-
 </div>

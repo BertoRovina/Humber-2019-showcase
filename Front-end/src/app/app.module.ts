@@ -20,7 +20,8 @@ import { CategoryComponent } from './category/category.component';
         GetByIdFormComponent,
         SideNavComponent,
         HomePageComponent,
-        CustomerComponent
+        CustomerComponent,
+        CategoryComponent
     ],
     imports: [
         BrowserModule,
