@@ -127,15 +127,14 @@
 
 <div *ngIf="location == '/del-page'">
   <div class="form-group">
-    <h3>Add new Category:</h3>
+    <h3>Delete a Category:</h3>
     <form>
       <div class="form-group">
         <label for="delCategoryId">Category Id:</label>
         <input type="number" class="form-control" id="delCategoryId" #delCategoryId />
       </div>
-      <!-- (click) passes input value to add() and then clears the input -->
       <button (click)="delete(delCategoryId.value)">
-        Add Category
+        Delete Category
       </button>
     </form>
   </div>

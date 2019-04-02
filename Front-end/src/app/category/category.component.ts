@@ -26,7 +26,6 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.setById(true);
-    console.log(location);
   }
 
   setById(isById: boolean): void {
@@ -59,12 +58,9 @@ export class CategoryComponent implements OnInit {
       .subscribe();
   }
 
-  delete(id: number): void {
-    this.categoriesService.deleteCategory(id);
-  }
-
-  edit(category) {
-    this.editCategory = category;
+  delete(id: string): void {
+    this.categoriesService.deleteCategory(id)
+      .subscribe();
   }
 
   search(searchTerm: string) {

@@ -64,8 +64,11 @@ export class CategoryService {
       );
   }
 
-  deleteCategory(id: number) {
-    return null;
+  deleteCategory(id: string): Observable<{}> {
+    return this.http.delete(this.categoriesUrl + '/' + id, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteCategory'))
+      );
   }
 
   updateCategory(id: number, updatedCategory: Category) {
