@@ -38,7 +38,7 @@ export class CustomerComponent implements OnInit {
     return this.searchMethod;
   }
 
-  getcustomers(): void {
+  getCustomers(): void {
     this.page = null;
     this.customer = null;
     this.customersService.getCustomers()

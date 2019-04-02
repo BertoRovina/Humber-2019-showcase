@@ -1,0 +1,84 @@
+<!--GET Order section-->
+
+<div *ngIf="location == '/get-page'">
+  <div class="form-group">
+    <h3>Search Method by Id:</h3>
+  </div>
+
+  <form id="formById">
+    <div class="form-group">
+      <label for="orderId">Order Id:</label>
+      <input class="form-control" id="orderId" #orderId />
+    </div>
+    <button (click)="searchById(orderId.value)">
+      Search
+    </button>
+  </form>
+
+  <div *ngIf="order">
+    <h3>Order found:</h3>
+    <ul>
+      <li>Order Id: {{ order.id || -1 }}</li>
+      <li>Order Instant: {{order.instant}}</li>
+      <li>Payment Method: {{order.payment.type}}</li>
+      <li>Customer Name: {{order.client.name}}</li>
+      <li>Address: {{order.address.address}}</li>
+      <li>Order Products: </li>
+      <ul>
+        <li *ngFor="let itemSet of order.itemSet">
+          <ul>
+            <li>Product Id: {{itemSet.product.id}}</li>
+            <li>Product Name: {{itemSet.product.name}}</li>
+            <li>Product Price: {{itemSet.product.price}}</li>
+            <li>Product Quantity: {{itemSet.quantity}}</li>
+            <li>Product Discount: {{itemSet.discount}}</li>
+            <li>Product Subtotal: {{itemSet.subTotal}}</li>
+          </ul>
+        </li>
+      </ul>
+      <li>Order Total Amount: {{order.totalAmount}}</li>
+    </ul>
+  </div>
+
+</div>
+
+<!--POST Order section-->
+
+<div *ngIf="location == '/post-page'">
+  <div class="form-group">
+    <h3>Add new Order:</h3>
+    <form>
+      <div class="form-group">
+        <label for="selectCustomers">Client:</label>
+        <select class="form-control" id="selectCustomers" [(ngModel)]="customers" name="selectCustomers" #selectedCustomer>
+          <option *ngFor="let customer of customers" [value]="customer">{{customer.name}}</option>
+        </select>
+      </div>
+      <div *ngIf="selectedCustomer" class="form-group">
+        <label for="selectCustomers">Client:</label>
+<!--        <select class="form-control" id="deliveryAddress" name="deliveryAddress">-->
+<!--          <option *ngFor="let address of selectedCustomer.addressList" [value]="address">{{}}</option>-->
+<!--        </select>-->
+      </div>
+      <div>
+        <div class="form-group">
+          <label for="selectCustomers">Client:</label>
+          <select class="form-control" id="selectProducts" [(ngModel)]="products" name="selectProducts">
+            <option *ngFor="let product of products" [value]="product">{{product.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="productQuantity">Product Quantity:</label>
+          <input type="number" class="form-control" id="productQuantity" #productQuantity />
+        </div>
+      </div>
+
+      <button (click)="add(null)">
+        Add Order
+      </button>
+    </form>
+  </div>
+</div>
+
+
+

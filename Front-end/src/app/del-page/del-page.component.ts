@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DelPageComponent implements OnInit {
 
-  objects = ['Category', 'Customer',
-    'Order', 'Product'];
+  objects = ['Category', 'Customer', 'Product'];
 
   selectedObject: string;
 

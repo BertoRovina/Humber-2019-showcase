@@ -1,4 +1,4 @@
-<!--GET Category section-->
+<!--GET Order section-->
 
 <div *ngIf="location == '/get-page'">
   <div class="form-group">
@@ -11,7 +11,7 @@
 
   <form *ngIf="isById()" id="formById">
     <div class="form-group">
-      <label for="categoryId">Category Id:</label>
+      <label for="categoryId">Order Id:</label>
       <input class="form-control" id="categoryId" #categoryId />
     </div>
     <!-- (click) passes input value to add() and then clears the input -->
@@ -46,11 +46,11 @@
   </form>
 
   <div *ngIf="category">
-    <h3>Category found:</h3>
+    <h3>Order found:</h3>
     <ul>
-      <li>Category Id: {{ category.id || -1 }}</li>
-      <li>Category Name: {{category.name}}</li>
-      <li>Category Products:</li>
+      <li>Order Id: {{ category.id || -1 }}</li>
+      <li>Order Name: {{category.name}}</li>
+      <li>Order Products:</li>
       <ul>
         <li *ngFor="let product of category.productList">
           <ul>
@@ -68,53 +68,53 @@
     <ul>
       <li *ngFor="let category of page.content">
         <ul>
-          <li>Category Id: {{category.id}}</li>
-          <li>Category Name: {{category.name}}</li>
+          <li>Order Id: {{category.id}}</li>
+          <li>Order Name: {{category.name}}</li>
         </ul>
       </li>
     </ul>
   </div>
 </div>
 
-<!--POST Category section-->
+<!--POST Order section-->
 
 <div *ngIf="location == '/post-page'">
   <div class="form-group">
-    <h3>Add new Category:</h3>
+    <h3>Add new Order:</h3>
     <form>
       <div class="form-group">
-        <label for="newCategoryName">Category Name:</label>
+        <label for="newCategoryName">Order Name:</label>
         <input class="form-control" id="newCategoryName" #newCategoryName />
       </div>
       <!-- (click) passes input value to add() and then clears the input -->
       <button (click)="add(newCategoryName.value)">
-        Add Category
+        Add Order
       </button>
     </form>
   </div>
 </div>
 
-<!--PUT Category section-->
+<!--PUT Order section-->
 
 <div *ngIf="location == '/put-page'">
   <div class="form-group">
-    <h3>Edit Category:</h3>
+    <h3>Edit Order:</h3>
     <form>
       <div class="form-group">
-        <label for="updateCategoryId">Category ID:</label>
+        <label for="updateCategoryId">Order ID:</label>
         <input class="form-control" id="updateCategoryId" #updateCategoryId />
       </div>
       <button (click)="searchById(updateCategoryId.value)">
-        Search Category
+        Search Order
       </button>
       <div *ngIf="category" class="form-group">
         <div class="form-group">
-          <label for="updateCategoryName">Category Name:</label>
+          <label for="updateCategoryName">Order Name:</label>
           <input class="form-control" id="updateCategoryName" #updateCategoryName [defaultValue]="category.name"/>
         </div>
 
         <button (click)="update(updateCategoryName.value)">
-          Update Category
+          Update Order
         </button>
       </div>
 
@@ -123,18 +123,18 @@
   </div>
 </div>
 
-<!--DEL Category section-->
+<!--DEL Order section-->
 
 <div *ngIf="location == '/del-page'">
   <div class="form-group">
-    <h3>Delete a Category:</h3>
+    <h3>Delete a Order:</h3>
     <form>
       <div class="form-group">
-        <label for="delCategoryId">Category Id:</label>
+        <label for="delCategoryId">Order Id:</label>
         <input type="number" class="form-control" id="delCategoryId" #delCategoryId />
       </div>
       <button (click)="delete(delCategoryId.value)">
-        Delete Category
+        Delete Order
       </button>
     </form>
   </div>

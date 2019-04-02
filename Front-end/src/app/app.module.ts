@@ -17,6 +17,9 @@ import {CustomerService} from './customer/customer.service';
 import { PostPageComponent } from './post-page/post-page.component';
 import { PutPageComponent } from './put-page/put-page.component';
 import { DelPageComponent } from './del-page/del-page.component';
+import {ProductComponent} from './product/product.component';
+import {OrderComponent} from './order/order.component';
+import {ProductService} from './product/product.service';
 
 @NgModule({
     declarations: [
@@ -26,6 +29,8 @@ import { DelPageComponent } from './del-page/del-page.component';
         CategoryComponent,
         HomePageComponent,
         CustomerComponent,
+        ProductComponent,
+        OrderComponent,
         PostPageComponent,
         PutPageComponent,
         DelPageComponent
@@ -40,7 +45,8 @@ import { DelPageComponent } from './del-page/del-page.component';
     providers: [
       HttpErrorHandler,
       MessageService,
-      CustomerService
+      CustomerService,
+      ProductService
     ],
     bootstrap: [AppComponent]
 
