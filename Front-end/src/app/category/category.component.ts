@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   searchMethod: boolean;
   directionOptions = ['Ascending', 'Descending'];
   orderByOptions = ['Name', 'Id'];
-  // location: string = location.pathname;
+  location: string = location.pathname;
 
 
   constructor(private categoriesService: CategoryService) { }
