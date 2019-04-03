@@ -28,7 +28,6 @@ export class OrderComponent implements OnInit {
   selectedCategory: Category;
   selectedCategoryId: number;
   productsPage: Page;
-  products: Product[];
   selectedProductId: number;
   selectedProduct: Product;
   cart: CartItem[];
@@ -44,7 +43,8 @@ export class OrderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.location === '/post-page') {
+    console.log(location);
+    if (this.location === '/Humber-2019-showcase-online-store/post-page') {
       this.customerService.getCustomers()
         .subscribe(customers => this.customers = customers);
       this.cart = [];
