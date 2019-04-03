@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>POST</h2>
+  <form>
+    <div class="form-group">
+      <label for="selectedObject">Object:</label>
+      <select class="form-control" id="selectedObject" [(ngModel)]="selectedObject" name="selectedObject">
+        <option *ngFor="let obj of objects" [value]="obj">{{obj}}</option>
+      </select>
+    </div>
+  </form>
+
+  <div *ngIf="selectedObject=='Category'">
+    <app-category></app-category>
+  </div>
+  <div *ngIf="selectedObject=='Customer'">
+    <app-customer></app-customer>
+  </div>
+  <div *ngIf="selectedObject=='Order'">
+    <app-order></app-order>
+  </div>
+  <div *ngIf="selectedObject=='Product'">
+    <app-product></app-product>
+  </div>
+
+
+</div>

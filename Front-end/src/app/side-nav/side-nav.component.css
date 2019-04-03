@@ -1,0 +1,35 @@
+.sidenav {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2b6998;
+    overflow-x: hidden;
+    table-layout: fixed;
+    box-shadow: 5px 0 10px 5px #a5a5a5;
+    border-radius: 5px;
+}
+
+.sidenav a {
+    padding: 6px 6px 6px 20px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.nav-item{
+    margin-top: 50px;
+}
+
+.nav-icon{
+    width: 60px;
+    height: 60px;
+    transition: 0.2s;
+    border-radius: 50px;
+}
+
+.nav-icon:hover{
+    box-shadow: 1px 0 10px 6px #214062;
+}
