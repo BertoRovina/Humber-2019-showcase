@@ -6,7 +6,7 @@ import {Page} from './page';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  // providers: [ CategoryService ],
+  providers: [ CategoryService ],
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   searchMethod: boolean;
   directionOptions = ['Ascending', 'Descending'];
   orderByOptions = ['Name', 'Id'];
-  location: string = location.pathname;
+  // location: string = location.pathname;
 
 
   constructor(private categoriesService: CategoryService) { }
