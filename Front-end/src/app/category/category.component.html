@@ -1,6 +1,6 @@
 <!--GET Category section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/get-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/get-page'">
     <div class="form-group">
         <h3>Search Method:</h3>
         <form>
@@ -15,7 +15,7 @@
             <input class="form-control" id="categoryId" #categoryId />
         </div>
         <!-- (click) passes input value to add() and then clears the input -->
-        <button (click)="searchById(categoryId.value)">
+        <button type="button" class="btn btn-primary"  (click)="searchById(categoryId.value)">
             Search
         </button>
     </form>
@@ -40,7 +40,7 @@
             </select>
         </div>
         <!-- (click) passes input value to add() and then clears the input -->
-        <button  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
+        <button type="button" class="btn btn-primary"  (click)="searchAdvanced(pages.value, linesPerPage.value, orderBy.value, direction.value)">
             Search
         </button>
     </form>
@@ -97,7 +97,7 @@
 
 <!--POST Category section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/post-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/post-page'">
     <div class="form-group">
         <h3>Add new Order:</h3>
         <form>
@@ -115,7 +115,7 @@
 
 <!--PUT Category section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/put-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/put-page'">
     <div class="form-group">
         <h3>Edit Order:</h3>
         <form>
@@ -144,7 +144,7 @@
 
 <!--DEL Category section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/del-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/del-page'">
     <div class="form-group">
         <h3>Delete a Order:</h3>
         <form>

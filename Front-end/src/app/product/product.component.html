@@ -1,6 +1,6 @@
 <!--GET Product section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/get-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/get-page'">
     <div class="form-group">
         <h3>Search Method:</h3>
         <form>
@@ -14,7 +14,7 @@
             <label for="productId">Product Id:</label>
             <input class="form-control" id="productId" #productId />
         </div>
-        <button (click)="searchById(productId.value)">
+        <button type="button" class="btn btn-primary" (click)="searchById(productId.value)">
             Search
         </button>
     </form>
@@ -94,7 +94,7 @@
 
 <!--POST Product section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/post-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/post-page'">
     <div class="form-group">
         <h3>Add new Product:</h3>
         <form>
@@ -112,7 +112,7 @@
 
 <!--PUT Product section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/put-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/put-page'">
     <div class="form-group">
         <h3>Edit Product:</h3>
         <form>
@@ -140,7 +140,7 @@
 
 <!--DEL Product section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/del-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/del-page'">
     <div class="form-group">
         <h3>Delete a Product:</h3>
         <form>

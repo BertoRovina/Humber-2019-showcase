@@ -1,6 +1,6 @@
 <!--GET Order section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/get-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/get-page'">
     <div class="form-group">
         <h3>Search Method by Id:</h3>
     </div>
@@ -10,7 +10,7 @@
             <label for="orderId">Order Id:</label>
             <input class="form-control" id="orderId" #orderId />
         </div>
-        <button (click)="searchById(orderId.value)">
+        <button type="button" class="btn btn-primary" (click)="searchById(orderId.value)">
             Search
         </button>
     </form>
@@ -67,7 +67,7 @@
 
 <!--POST Order section-->
 
-<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/post-page'">
+<div *ngIf="location == '/Humber-2019-showcase-online-store/post-page'">
     <div class="form-group">
         <h3>Add new Order:</h3>
         <form>
