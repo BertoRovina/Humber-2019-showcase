@@ -115,7 +115,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <td colspan="3">Cart Items:</Td>
+                            <td colspan="3" class="result-table-subheader">Cart Items:</td>
                         </tr>
                         <tr>
                             <td>Name</td>
@@ -124,11 +124,11 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let cartItem of cart">>
-                                <td>{{cartItem.product.name}}</td>
-                                <td>${{cartItem.product.price}}</td>
-                                <td>{{cartItem.quantity}}</td>
-                            </tr>
+                        <tr *ngFor="let cartItem of cart">
+                            <td>{{cartItem.product.name}}</td>
+                            <td>${{cartItem.product.price}}</td>
+                            <td>{{cartItem.quantity}}</td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
