@@ -24,3 +24,10 @@ h1, h2, h3, p, a{
     font-size: 30px;
     text-align: center;
 }
+
+
+.result-table-subheader{
+    font-weight: 900;
+    font-size: 20px;
+    text-align: center;
+}

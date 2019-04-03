@@ -1,4 +1,4 @@
-<!--GET Order section-->
+<!--GET Category section-->
 
 <div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/get-page'">
     <div class="form-group">
@@ -11,7 +11,7 @@
 
     <form *ngIf="isById()" id="formById">
         <div class="form-group">
-            <label for="categoryId">Order Id:</label>
+            <label for="categoryId">Category Id:</label>
             <input class="form-control" id="categoryId" #categoryId />
         </div>
         <!-- (click) passes input value to add() and then clears the input -->
@@ -30,7 +30,7 @@
             <input class="form-control" id="linesPerPage" #linesPerPage />
         </div>
         <div class="form-group">
-            <label for="categoryId">Order by:</label>
+            <label for="categoryId">Category by:</label>
             <select class="form-control" id="orderBy" #orderBy>
                 <option *ngFor="let obj of orderByOptions" [value]="obj">{{obj}}</option>
             </select>
@@ -49,80 +49,90 @@
         <div class="result-box">
 
 
-        <h3>Order found:</h3>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <td colspan="3" class="result-table-header">{{category.name}} - {{ category.id || -1 }}</td>
-            </tr>
-            <tr>
-                <th>Product ID</th>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let product of category.productList">
-                <td>{{product.id}}</td>
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-            </tr>
-            </tbody>
-        </table>
+            <h3>Category found:</h3>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td colspan="3" class="result-table-header">{{category.name}} - {{ category.id || -1 }}</td>
+                </tr>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of category.productList">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <div *ngIf="page">
-        <h3>Categories found:</h3>
-        <ul>
-            <li *ngFor="let category of page.content">
-                <ul>
-                    <li>Order Id: {{category.id}}</li>
-                    <li>Order Name: {{category.name}}</li>
-                </ul>
-            </li>
-        </ul>
+        <div class="result-box">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td colspan="2">Categories:</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let category of page.content">
+                        <td>{{category.id}}</td>
+                        <td>{{category.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
-<!--POST Order section-->
+<!--POST Category section-->
 
-<div *ngIf="location == '/post-page'">
+<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/post-page'">
     <div class="form-group">
         <h3>Add new Order:</h3>
         <form>
             <div class="form-group">
-                <label for="newCategoryName">Order Name:</label>
+                <label for="newCategoryName">Category Name:</label>
                 <input class="form-control" id="newCategoryName" #newCategoryName />
             </div>
             <!-- (click) passes input value to add() and then clears the input -->
-            <button (click)="add(newCategoryName.value)">
-                Add Order
+            <button type="button" class="btn btn-primary" (click)="add(newCategoryName.value)">
+                Add Category
             </button>
         </form>
     </div>
 </div>
 
-<!--PUT Order section-->
+<!--PUT Category section-->
 
-<div *ngIf="location == '/put-page'">
+<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/put-page'">
     <div class="form-group">
         <h3>Edit Order:</h3>
         <form>
             <div class="form-group">
-                <label for="updateCategoryId">Order ID:</label>
+                <label for="updateCategoryId">Category ID:</label>
                 <input class="form-control" id="updateCategoryId" #updateCategoryId />
             </div>
-            <button (click)="searchById(updateCategoryId.value)">
+            <button type="button" class="btn btn-primary" (click)="searchById(updateCategoryId.value)">
                 Search Order
             </button>
             <div *ngIf="category" class="form-group">
                 <div class="form-group">
-                    <label for="updateCategoryName">Order Name:</label>
+                    <label for="updateCategoryName">Category Name:</label>
                     <input class="form-control" id="updateCategoryName" #updateCategoryName [defaultValue]="category.name"/>
                 </div>
 
-                <button (click)="update(updateCategoryName.value)">
+                <button type="button" class="btn btn-primary" (click)="update(updateCategoryName.value)">
                     Update Order
                 </button>
             </div>
@@ -132,17 +142,17 @@
     </div>
 </div>
 
-<!--DEL Order section-->
+<!--DEL Category section-->
 
-<div *ngIf="location == '/del-page'">
+<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/del-page'">
     <div class="form-group">
         <h3>Delete a Order:</h3>
         <form>
             <div class="form-group">
-                <label for="delCategoryId">Order Id:</label>
+                <label for="delCategoryId">Category Id:</label>
                 <input type="number" class="form-control" id="delCategoryId" #delCategoryId />
             </div>
-            <button (click)="delete(delCategoryId.value)">
+            <button  type="button" class="btn btn-danger" (click)="delete(delCategoryId.value)">
                 Delete Order
             </button>
         </form>

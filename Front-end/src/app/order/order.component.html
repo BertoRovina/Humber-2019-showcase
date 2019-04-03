@@ -1,123 +1,148 @@
 <!--GET Order section-->
 
-<div *ngIf="location == '/get-page'">
-  <div class="form-group">
-    <h3>Search Method by Id:</h3>
-  </div>
-
-  <form id="formById">
+<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/get-page'">
     <div class="form-group">
-      <label for="orderId">Order Id:</label>
-      <input class="form-control" id="orderId" #orderId />
-</div>
-    <button (click)="searchById(orderId.value)">
-      Search
-    </button>
-  </form>
+        <h3>Search Method by Id:</h3>
+    </div>
 
-  <div *ngIf="order">
-    <h3>Order found:</h3>
-    <ul>
-      <li>Order Id: {{ order.id || -1 }}</li>
-      <li>Order Instant: {{order.instant}}</li>
-      <li>Payment Method: {{order.payment}}</li>
-      <li>Customer Name: {{order.client.name}}</li>
-      <li>Address: {{order.address.address}}</li>
-      <li>Order Products: </li>
-        <li *ngFor="let itemSet of order.itemSet">
-          <ul>
-            <li>Product Id: {{itemSet.product.id}}</li>
-            <li>Product Name: {{itemSet.product.name}}</li>
-            <li>Product Price: {{itemSet.product.price}}</li>
-            <li>Product Quantity: {{itemSet.quantity}}</li>
-            <li>Product Discount: {{itemSet.discount}}</li>
-            <li>Product Subtotal: {{itemSet.subTotal}}</li>
-          </ul>
-        </li>
-      <li>Order Total Amount: {{order.totalAmount}}</li>
-    </ul>
-  </div>
+    <form id="formById">
+        <div class="form-group">
+            <label for="orderId">Order Id:</label>
+            <input class="form-control" id="orderId" #orderId />
+        </div>
+        <button (click)="searchById(orderId.value)">
+            Search
+        </button>
+    </form>
+
+    <div *ngIf="order">
+        <div class="result-box">
+            <h3>Order found:</h3>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td><b>Order Id:</b> {{ order.id || -1 }}</td>
+                    <td><b>Order Instant:</b> {{order.instant}}</td>
+                    <td><b>Payment Method:</b> {{order.payment}}</td>
+                    <td><b>Customer Name:</b> {{order.client.name}}</td>
+                    <td><b>Address:</b> {{order.address.address}}</td>
+                </tr>
+                </thead>
+            </table>
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <td class="result-table-subheader">Products</td>
+                </tr>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Discount</th>
+                    <th>Subtotal</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let itemSet of order.itemSet">
+                    <td>{{itemSet.product.id}}</td>
+                    <td>{{itemSet.product.name}}</td>
+                    <td>{{itemSet.product.price}}</td>
+                    <td>{{itemSet.quantity}}</td>
+                    <td>{{itemSet.discount}}</td>
+                    <td>${{itemSet.subTotal}}</td>
+                </tr>
+                <tr>
+                    <td colspan="6"><b>Order Total Amount: ${{order.totalAmount}}</b></td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 
 </div>
 
 <!--POST Order section-->
 
-<div *ngIf="location == '/post-page'">
-  <div class="form-group">
-    <h3>Add new Order:</h3>
-    <form>
-      <div class="form-group">
-        <label for="selectCustomers">Customer:</label>
-        <select [(ngModel)]="selectedCustomerId" (change)="setSelectedCustomer(selectedCustomerId)" class="form-control" name="selectCustomers" id="selectCustomers">
-          <option disabled selected value>Select a customer</option>
-          <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
-        </select>
-      </div>
-      <div *ngIf="selectedCustomer" class="form-group">
-        <label for="selectAddress">Address:</label>
-        <select [(ngModel)]="selectedAddressId" (change)="setSelectedAddress(selectedAddressId)" class="form-control" name="selectAddress" id="selectAddress">
-          <option disabled selected value>Select a delivery address</option>
-          <option *ngFor="let address of selectedCustomer.addressList" [value]="address.id">{{address.number}} {{address.address}}</option>
-        </select>
-      </div>
-      <div *ngIf="selectedAddress" class="form-group">
-        <label for="selectCategories">Product's Category:</label>
-        <select [(ngModel)]="selectedCategoryId" (change)="setSelectedCategory(selectedCategoryId)" class="form-control" name="selectCategories" id="selectCategories">
-          <option disabled selected value>Select a category</option>
-          <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
-        </select>
-      </div>
-      <div *ngIf="selectedCategory" class="form-group">
-        <label for="selectProducts">Products:</label>
+<div *ngIf="location == 'https://bertorovina.github.io/Humber-2019-showcase-online-store/post-page'">
+    <div class="form-group">
+        <h3>Add new Order:</h3>
+        <form>
+            <div class="form-group">
+                <label for="selectCustomers">Customer:</label>
+                <select [(ngModel)]="selectedCustomerId" (change)="setSelectedCustomer(selectedCustomerId)" class="form-control" name="selectCustomers" id="selectCustomers">
+                    <option disabled selected value>Select a customer</option>
+                    <option *ngFor="let customer of customers" [value]="customer.id">{{customer.name}}</option>
+                </select>
+            </div>
+            <div *ngIf="selectedCustomer" class="form-group">
+                <label for="selectAddress">Address:</label>
+                <select [(ngModel)]="selectedAddressId" (change)="setSelectedAddress(selectedAddressId)" class="form-control" name="selectAddress" id="selectAddress">
+                    <option disabled selected value>Select a delivery address</option>
+                    <option *ngFor="let address of selectedCustomer.addressList" [value]="address.id">{{address.number}} {{address.address}}</option>
+                </select>
+            </div>
+            <div *ngIf="selectedAddress" class="form-group">
+                <label for="selectCategories">Product's Category:</label>
+                <select [(ngModel)]="selectedCategoryId" (change)="setSelectedCategory(selectedCategoryId)" class="form-control" name="selectCategories" id="selectCategories">
+                    <option disabled selected value>Select a category</option>
+                    <option *ngFor="let category of categories" [value]="category.id">{{category.name}}</option>
+                </select>
+            </div>
+            <div *ngIf="selectedCategory" class="form-group">
+                <label for="selectProducts">Products:</label>
 
-        <div>
-          <select [(ngModel)]="selectedProductId" (change)="setSelectedProduct(selectedProductId)" class="form-control" id="selectProducts" name="selectProducts" >
-            <option disabled selected value>Select a product</option>
-            <option *ngFor="let product of productsPage.content" [value]="product.id">{{product.name}} {{product.price}}</option>
-          </select>
-          <label for="productQuantity">Quantity:</label>
-          <input [(ngModel)]="productQuantity" class="form-control" id="productQuantity" name="productQuantity"/>
+                <div>
+                    <select [(ngModel)]="selectedProductId" (change)="setSelectedProduct(selectedProductId)" class="form-control" id="selectProducts" name="selectProducts" >
+                        <option disabled selected value>Select a product</option>
+                        <option *ngFor="let product of productsPage.content" [value]="product.id">{{product.name}} {{product.price}}</option>
+                    </select>
+                    <label for="productQuantity">Quantity:</label>
+                    <input [(ngModel)]="productQuantity" class="form-control" id="productQuantity" name="productQuantity"/>
 
-        </div>
-        <button (click)="addToCart()">
-          Add Product to Cart
-        </button>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="addToCart()">
+                    Add Product to Cart
+                </button>
 
-      </div>
+            </div>
 
-      <div *ngIf="cart.length > 0">
-        <h3>Cart Items:</h3>
-        <ul>
-          <li *ngFor="let cartItem of cart">{{cartItem.product.name}} ${{cartItem.product.price}} Qty: {{cartItem.quantity}}</li>
-        </ul>
-      </div>
+            <div *ngIf="cart.length > 0">
+                <h3>Cart Items:</h3>
+                <ul>
+                    <li *ngFor="let cartItem of cart">{{cartItem.product.name}} ${{cartItem.product.price}} Qty: {{cartItem.quantity}}</li>
+                </ul>
+            </div>
 
-      <div *ngIf="cart.length > 0" class="form-group">
-        <label for="selectPayment">Payment Information:</label>
-        <select [(ngModel)]="selectedPayment" (change)="setSelectedPayment(selectedPayment)" class="form-control" name="selectPayment" id="selectPayment">
-          <option disabled selected value>Select a payment method</option>
-          <option value="cardPayment">Card Payment</option>
-          <option value="bankBilletPayment">Bank Billet Payment</option>
-        </select>
-      </div>
+            <div *ngIf="cart.length > 0" class="form-group">
+                <label for="selectPayment">Payment Information:</label>
+                <select [(ngModel)]="selectedPayment" (change)="setSelectedPayment(selectedPayment)" class="form-control" name="selectPayment" id="selectPayment">
+                    <option disabled selected value>Select a payment method</option>
+                    <option value="cardPayment">Card Payment</option>
+                    <option value="bankBilletPayment">Bank Billet Payment</option>
+                </select>
+            </div>
 
-      <div *ngIf="selectedPayment == 'cardPayment'" class="form-group">
-        <label for="selectPayment">Installments Number:</label>
-        <input [(ngModel)]="installmentsNumber" type="number" class="form-control" id="installmentsNumber" name="installmentsNumber"/>
-      </div>
+            <div *ngIf="selectedPayment == 'cardPayment'" class="form-group">
+                <label for="selectPayment">Installments Number:</label>
+                <input [(ngModel)]="installmentsNumber" type="number" class="form-control" id="installmentsNumber" name="installmentsNumber"/>
+            </div>
 
-      <div *ngIf="selectedPayment == 'bankBilletPayment'" class="form-group">
-        <label for="selectPayment">Expiry Date:</label>
-        <input [(ngModel)]="expiryDate" type="date" class="form-control" id="expiryDate" name="expiryDate"/>
-<!--        <label for="selectPayment">Payment Date:</label>-->
-<!--        <input [(ngModel)]="installmentsNumber" type="number" class="form-control" id="installmentsNumber" name="installmentsNumber"/>-->
-      </div>
+            <div *ngIf="selectedPayment == 'bankBilletPayment'" class="form-group">
+                <label for="selectPayment">Expiry Date:</label>
+                <input [(ngModel)]="expiryDate" type="date" class="form-control" id="expiryDate" name="expiryDate"/>
+                <!--        <label for="selectPayment">Payment Date:</label>-->
+                <!--        <input [(ngModel)]="installmentsNumber" type="number" class="form-control" id="installmentsNumber" name="installmentsNumber"/>-->
+            </div>
 
-      <button (click)="add(null)">
-        Create Order
-      </button>
-    </form>
-  </div>
+            <button type="button" class="btn btn-primary" (click)="add(null)">
+                Create Order
+            </button>
+        </form>
+    </div>
 </div>
 
 
