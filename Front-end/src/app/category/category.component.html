@@ -1,4 +1,4 @@
-<!--GET Order section-->
+<!--GET Category section-->
 
 <div *ngIf="location == '/get-page'">
   <div class="form-group">
@@ -47,21 +47,26 @@
 
   <div *ngIf="category">
     <div id="categoryId-result" class="result-box">
-      <h3>Order found:</h3>
-      <ul>
-        <li>Order Id: {{ category.id || -1 }}</li>
-        <li>Order Name: {{category.name}}</li>
-        <li>Order Products:</li>
-        <ul>
-          <li *ngFor="let product of category.productList">
-            <ul>
-              <li>Product Id: {{product.id}}</li>
-              <li>Product Name: {{product.name}}</li>
-              <li>Product Price: {{product.price}}</li>
-            </ul>
-          </li>
-        </ul>
-      </ul>
+      <h3>Category found:</h3>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <td colspan="3" class="result-table-header">{{category.name}} - ({{ category.id || -1 }})</td>
+        </tr>
+        <tr>
+          <th>Product ID</th>
+          <th>Name</th>
+          <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of category.productList">
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.price}}</td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -70,8 +75,8 @@
     <ul>
       <li *ngFor="let category of page.content">
         <ul>
-          <li>Order Id: {{category.id}}</li>
-          <li>Order Name: {{category.name}}</li>
+          <li>Category Id: {{category.id}}</li>
+          <li>Category Name: {{category.name}}</li>
         </ul>
       </li>
     </ul>
@@ -82,7 +87,7 @@
 
 <div *ngIf="location == '/post-page'">
   <div class="form-group">
-    <h3>Add new Order:</h3>
+    <h3>Add new Category:</h3>
     <form>
       <div class="form-group">
         <label for="newCategoryName">Order Name:</label>
@@ -100,18 +105,18 @@
 
 <div *ngIf="location == '/put-page'">
   <div class="form-group">
-    <h3>Edit Order:</h3>
+    <h3>Edit Category:</h3>
     <form>
       <div class="form-group">
-        <label for="updateCategoryId">Order ID:</label>
+        <label for="updateCategoryId">Category ID:</label>
         <input class="form-control" id="updateCategoryId" #updateCategoryId />
       </div>
       <button (click)="searchById(updateCategoryId.value)">
-        Search Order
+        Search Category
       </button>
       <div *ngIf="category" class="form-group">
         <div class="form-group">
-          <label for="updateCategoryName">Order Name:</label>
+          <label for="updateCategoryName">Category Name:</label>
           <input class="form-control" id="updateCategoryName" #updateCategoryName [defaultValue]="category.name"/>
         </div>
 
@@ -125,18 +130,18 @@
   </div>
 </div>
 
-<!--DEL Order section-->
+<!--DEL Category section-->
 
 <div *ngIf="location == '/del-page'">
   <div class="form-group">
-    <h3>Delete a Order:</h3>
+    <h3>Delete a Category:</h3>
     <form>
       <div class="form-group">
         <label for="delCategoryId">Order Id:</label>
         <input type="number" class="form-control" id="delCategoryId" #delCategoryId />
       </div>
       <button (click)="delete(delCategoryId.value)">
-        Delete Order
+        Delete Category
       </button>
     </form>
   </div>
