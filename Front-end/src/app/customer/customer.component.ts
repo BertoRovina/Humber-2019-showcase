@@ -24,7 +24,6 @@ export class CustomerComponent implements OnInit {
 
   ngOnInit() {
     this.setById(true);
-    console.log('PATH: ' + location.pathname);
   }
 
   setById(isById: boolean): void {
