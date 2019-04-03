@@ -73,7 +73,7 @@ export class CustomerComponent implements OnInit {
     }
   }
 
-  searchById(id: string) {
+  searchById(id: number) {
     this.customers = null;
     this.page = null;
     this.editCustomer = undefined;

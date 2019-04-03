@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Order} from './order';
+import {Order, OrderPost} from './order';
 import {catchError} from 'rxjs/internal/operators/catchError';
 import {HandleError, HttpErrorHandler} from '../http-error-handler.service';
 
@@ -36,8 +36,8 @@ export class OrderService {
   }
 
   /** POST: add a new order to the database */
-  addOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>(this.ordersUrl, order, httpOptions)
+  addOrder(order: OrderPost): Observable<OrderPost> {
+    return this.http.post<OrderPost>(this.ordersUrl, order, httpOptions)
       .pipe(
         catchError(this.handleError('addOrder', order))
       );

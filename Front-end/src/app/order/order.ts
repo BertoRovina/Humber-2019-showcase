@@ -2,11 +2,21 @@ import {Product} from '../product/product';
 import {Customer} from '../customer/customer';
 import {Address} from '../customer/address';
 
-interface Payment {
+export interface Payment {
   type: string;
-  id: number;
+}
+
+export interface CardPayment extends Payment {
   monthlyInstallments: number;
-  state: string;
+}
+
+export interface BankBilletPayment extends Payment {
+  expiryDate: string;
+}
+
+export interface CartItem {
+  quantity: number;
+  product: Product;
 }
 
 interface ItemSet {
@@ -25,4 +35,11 @@ export interface Order {
   address: Address;
   itemSet: ItemSet[];
   totalAmount: number;
+}
+
+export interface OrderPost {
+  client: Customer;
+  address: Address;
+  payment: Payment;
+  cartItem: CartItem[];
 }

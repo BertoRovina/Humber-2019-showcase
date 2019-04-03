@@ -47,7 +47,7 @@ export class CustomerService {
   }
 
   /* GET Customers with the id sent */
-  findCustomerById(id: string): Observable<Customer> {
+  findCustomerById(id: number): Observable<Customer> {
 
     return this.http.get<Customer>(this.customersUrl + '/' + id)
       .pipe(

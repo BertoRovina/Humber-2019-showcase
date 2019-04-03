@@ -26,29 +26,23 @@ export class ProductService {
   }
 
   /** GET Products from the server */
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl)
-      .pipe(
-        catchError(this.handleError('getProducts', []))
-      );
-  }
 
   /* GET Products whose name contains search term */
-  searchProducts(term: string): Observable<Product[]> {
-    term = term.trim();
+  searchProducts(categoryId: string): Observable<Page> {
+    categoryId = categoryId.trim();
 
     // Add safe, URL encoded search parameter if there is a search term
-    const options = term ?
-      { params: new HttpParams().set('name', term) } : {};
+    const options = categoryId ?
+      { params: new HttpParams().set('categories', categoryId) } : {};
 
-    return this.http.get<Product[]>(this.productsUrl, options)
+    return this.http.get<Page>(this.productsUrl + '/', options)
       .pipe(
-        catchError(this.handleError('searchProducts', []))
+        catchError(this.handleError('searchProducts', null))
       );
   }
 
   /* GET Products with the id sent */
-  findProductById(id: string): Observable<Product> {
+  findProductById(id: number): Observable<Product> {
 
     return this.http.get<Product>(this.productsUrl + '/' + id)
       .pipe(

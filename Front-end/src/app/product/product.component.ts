@@ -40,13 +40,6 @@ export class ProductComponent implements OnInit {
     return this.searchMethod;
   }
 
-  getProducts(): void {
-    this.page = null;
-    this.product = null;
-    this.productsService.getProducts()
-      .subscribe(products => this.products = products);
-  }
-
   add(name: string): void {
     this.editProduct = undefined;
     name = name.trim();
@@ -67,11 +60,11 @@ export class ProductComponent implements OnInit {
     this.editProduct = undefined;
     if (searchTerm) {
       this.productsService.searchProducts(searchTerm)
-        .subscribe(products => this.products = products);
+        .subscribe(products => this.page = products);
     }
   }
 
-  searchById(id: string) {
+  searchById(id: number) {
     this.products = null;
     this.page = null;
     this.editProduct = undefined;

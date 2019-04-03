@@ -20,6 +20,7 @@ import { DelPageComponent } from './del-page/del-page.component';
 import {ProductComponent} from './product/product.component';
 import {OrderComponent} from './order/order.component';
 import {ProductService} from './product/product.service';
+import {CategoryService} from './category/category.service';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import {ProductService} from './product/product.service';
     providers: [
       HttpErrorHandler,
       MessageService,
+      CategoryService,
       CustomerService,
       ProductService
     ],
