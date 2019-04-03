@@ -111,10 +111,27 @@
             </div>
 
             <div *ngIf="cart.length > 0">
-                <h3>Cart Items:</h3>
-                <ul>
-                    <li *ngFor="let cartItem of cart">{{cartItem.product.name}} ${{cartItem.product.price}} Qty: {{cartItem.quantity}}</li>
-                </ul>
+                <div class="result-box">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <td colspan="3">Cart Items:</Td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td>Price</td>
+                            <td>Quantity</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cartItem of cart">>
+                                <td>{{cartItem.product.name}}</td>
+                                <td>${{cartItem.product.price}}</td>
+                                <td>{{cartItem.quantity}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div *ngIf="cart.length > 0" class="form-group">
