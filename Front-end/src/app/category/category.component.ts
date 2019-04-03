@@ -6,7 +6,7 @@ import {Page} from './page';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  providers: [ CategoryService ],
+  // providers: [ CategoryService ],
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
